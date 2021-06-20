@@ -21,7 +21,7 @@ public class EmailSend {
 		
 		//인증이 안된 사용자에게 메일을 보내기 위해 변수 선언
 		String host = "http://localhost:8080/Hanseo/"; //홈페이지 주소 
-		String from = "ljs10270@gmail.com"; //관리자 구글 아이디
+		String from = "~~~@gmail.com"; //관리자 구글 아이디
 		UserDTO user = new UserDAO().getUser(userID);
 		String to = user.getUserEmail(); //이메일 받는사람(사용자) 이메일을 가져옴
 		String emailTitle = "한서대학교 족보 공유 커뮤니티 회원가입을 위한 인증 메일입니다";
