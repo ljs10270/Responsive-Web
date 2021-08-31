@@ -9,7 +9,7 @@
 
 * 보안
 = 스크립트 특수문자 치환으로 XSS 공격 방지, Session 검증으로 URL 비정상 접근 방지, 비밀번호/인증코드 해시화(SHA-256), 비밀번호 정규식(JavaScript), SQL 인젝션 방지(prepareStatement()), 경로 순회 공격 방지, 웹셸(Web Shell) 방지, 파일 이름 중복 보안(DefaultFileRenamePolicy()), Null Pointer 역참조 방지, URL Encoding/Decoding
-
+***
 
 1. 개발 환경 및 사용 도구와 패턴
 - IDE: Eclipse Java EE
@@ -18,7 +18,7 @@
 - DBMS: MySQL 5.7.26
 - 디자인 패턴: MVC Pattern
 - 통신 방식과 활용 프로토콜: JSON-Ajax, HTTP GET/POST, SMTP, IP
-
+***
 2. 개발 Kit 및 Plug-In(외부 라이브러리) 
 - JDK 1.8.0_211
 - JDBC 5.1.48 (mysql-connector-java-5.1.48-bin.jar)
@@ -29,7 +29,7 @@
 - activation 1.1.1 (activation.jar)
 - cos 20.08 (cos.jar)
 - Google Font(jejugothic.css, nanumgothic.css)
-
+***
 ![image](https://user-images.githubusercontent.com/59761622/130317071-5803491a-1364-49bd-af88-53bb451b8d6b.png)
 
 
