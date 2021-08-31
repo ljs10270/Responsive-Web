@@ -31,13 +31,13 @@
 - Google Font(jejugothic.css, nanumgothic.css)
 ***
 ![image](https://user-images.githubusercontent.com/59761622/130317071-5803491a-1364-49bd-af88-53bb451b8d6b.png)
-
+***
 
 ![image](https://user-images.githubusercontent.com/59761622/130317062-122162be-9664-4de4-8a02-54f748134ef1.png)
-
+***
 
 ![image](https://user-images.githubusercontent.com/59761622/130317089-532f0aa2-bcf7-4cf1-8376-1a59760bc6e0.png)
-
+***
 
 ![image](https://user-images.githubusercontent.com/59761622/130317142-73d96f67-02ff-4e88-a384-98b1300fd3c3.png)
 
