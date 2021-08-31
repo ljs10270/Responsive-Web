@@ -1,7 +1,7 @@
 # Responsive-Web
 대학교 족보 공유 반응형 웹
 
-![image](https://user-images.githubusercontent.com/59761622/122669164-066f0b00-d1f7-11eb-9766-9705fbc8f784.png)
+![image](https://user-images.githubusercontent.com/59761622/131461675-da03751e-6d26-4951-8ebe-51f058ebd0c9.png)
 
 
 * 구현 기능
