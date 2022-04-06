@@ -13,10 +13,10 @@
 
 1. 개발 환경 및 사용 도구와 패턴
 - IDE: Eclipse Java EE
-- 개발 언어: JSP & Servlet, HTML, CSS, JavaScript, SQL
+- 개발 언어: JSP & Servlet(MPA & SSR), HTML, CSS, JavaScript, SQL
 - Middleware: Apache Tomcat 8.5.46
 - DBMS: MySQL 5.7.26
-- 디자인 패턴: MVC Pattern
+- 디자인 패턴: MVC Pattern(모델2)
 - 통신 방식과 활용 프로토콜: JSON-Ajax, HTTP GET/POST, SMTP, IP
 ***
 2. 개발 Kit 및 Plug-In(외부 라이브러리) 
