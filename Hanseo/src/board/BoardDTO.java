@@ -2,16 +2,16 @@ package board;
 
 public class BoardDTO {
 	
-	String userID;
-	int boardID;
-	String boardTitle;
-	String boardContent;
-	String boardDate;
-	int boardHit; //조회수
-	String boardFile;
-	String boardRealFile; //프로필 이미지 파일과 중복이 되면 upload 폴더 인식 못함 즉, 중복 보안을 위해 리얼파일로 옮기면서 파일명 달라지게 할 것 
-	String lectureType;
-	int likeCount;
+	private String userID;
+	private int boardID;
+	private String boardTitle;
+	private String boardContent;
+	private String boardDate;
+	private int boardHit; //조회수
+	private String boardFile;
+	private String boardRealFile; //프로필 이미지 파일과 중복이 되면 upload 폴더 인식 못함 즉, 중복 보안을 위해 리얼파일로 옮기면서 파일명 달라지게 할 것 
+	private String lectureType;
+	private int likeCount;
 	
 	public String getUserID() {
 		return userID;
