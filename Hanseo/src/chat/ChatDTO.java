@@ -2,11 +2,11 @@ package chat;
 
 public class ChatDTO {
 	
-	int chatID;
-	String fromID;
-	String toID;
-	String chatContent;
-	String chatTime;
+	private int chatID;
+	private String fromID;
+	private String toID;
+	private String chatContent;
+	private String chatTime;
 	
 	public int getChatID() {
 		return chatID;
