@@ -132,7 +132,7 @@
 					</a>
 					<ul class="dropdown-menu">
 					<%
-						if(userID.equals("ljs10270")) {
+						if(userID.equals("~~")) {
 					%>
 						<li><a href="userManagement.jsp">회원 관리</a></li>
 					<%
