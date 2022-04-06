@@ -133,7 +133,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">개인정보취급방침</a></li>
 						<%
-							if(userID != null && userID.equals("ljs10270")) {
+							if(userID != null && userID.equals("~~")) {
 						%>
 							<li><a href="userManagement.jsp">회원 관리</a></li>
 						<%
