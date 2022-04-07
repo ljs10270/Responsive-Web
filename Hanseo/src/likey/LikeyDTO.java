@@ -1,9 +1,9 @@
 package likey;
 
 public class LikeyDTO {
-	String userID;
-	int boardID;
-	String userIP;
+	private String userID;
+	private int boardID;
+	private String userIP;
 	
 	public String getUserID() {
 		return userID;
