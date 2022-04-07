@@ -1,10 +1,11 @@
 package likey;
 
 public class ReplyLikeyDTO {
-	String userID;
-	int boardID;
-	int replyGroup;
-	String userIP;
+	private String userID;
+	private int boardID;
+	private int replyGroup;
+	private String userIP;
+	
 	public String getUserID() {
 		return userID;
 	}
