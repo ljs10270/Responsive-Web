@@ -2,15 +2,15 @@ package user;
 
 public class UserDTO {
 	
-	String userID;
-	String userPassword;
-	String userName;
-	String userDepartment;
-	String userGender;
-	String userProfile;
-	String userEmail;
-	String userEmailHash;
-	boolean userEmailChecked;
+	private String userID;
+	private String userPassword;
+	private String userName;
+	private String userDepartment;
+	private String userGender;
+	private String userProfile;
+	private String userEmail;
+	private String userEmailHash;
+	private boolean userEmailChecked;
 	
 	public String getUserID() {
 		return userID;
