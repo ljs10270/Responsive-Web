@@ -17,42 +17,42 @@ public class ChatDAO {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null; //특정한 SQL문을 실행한 이후에 나온 결과값을 처리
+		ResultSet rs = null;
 		
 		try {
-			conn = DatabaseUtil.getConnection(); //DatabaseUtil클래스의 get함수(DB연결)를 호출하여 대입
-			pstmt = conn.prepareStatement(SQL);//위의 SQL변수를 가져와 쿼리문을 실행하게 준비
-			pstmt.setString(1, fromID); // 위의 쿼리문의 첫번째 ?에 넣음
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);//SQL 인젝션 방지
+			pstmt.setString(1, fromID);
 			pstmt.setString(2, toID);
 			pstmt.setString(3, chatContent);
-			return pstmt.executeUpdate(); //성공하면 1 반환
+			return pstmt.executeUpdate();
 			
 		} catch(Exception e) {
-			e.printStackTrace(); //오류 잡히면 해당 오류 출력
+			e.printStackTrace();
 		} finally {
 			try {if(conn != null) conn.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(pstmt != null) pstmt.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(rs != null) rs.close();} catch (Exception e) {e.printStackTrace();}
-			//1번 사용했으면 자원을 헤제해줘야 함
+			
 		}
-		return -1; //DB 오류
+		return -1; 
 	}
 	
 	// 채팅 내역 가져오기
 	public ArrayList<ChatDTO> getChatListByID(String fromID, String toID, String chatID) {
 		String SQL = "SELECT * FROM CHAT WHERE ((fromID = ? AND toID = ?) OR (fromID = ? AND toID = ?)) AND chatID > ? ORDER BY chatTime";
-		//쿼리문 SQL에 대입
+		
 		
 		ArrayList<ChatDTO> chatList = null;
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null; //특정한 SQL문을 실행한 이후에 나온 결과값을 처리
+		ResultSet rs = null;
 		
 		try {
-			conn = DatabaseUtil.getConnection(); //DatabaseUtil클래스의 get함수(DB연결)를 호출하여 대입
-			pstmt = conn.prepareStatement(SQL);//위의 SQL변수를 가져와 쿼리문을 실행하게 준비
-			pstmt.setString(1, fromID); // 위의 쿼리문의 첫번째 ?에 넣음
+			conn = DatabaseUtil.getConnection(); 
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, fromID); 
 			pstmt.setString(2, toID);
 			pstmt.setString(3, toID);
 			pstmt.setString(4, fromID); //메시지를 받던 보내던 항상 참이 되도록
@@ -65,7 +65,7 @@ public class ChatDAO {
 				ChatDTO chat = new ChatDTO();
 				chat.setChatID(rs.getInt("chatID"));
 				
-				// 크로스 사이트 스크립트 공격 보안을 위해 특수문자를 html로 치환 
+				// 크로스 사이트 스크립트 공격(XSS) 보안을 위해 특수문자를 html로 치환 
 				chat.setFromID(rs.getString("fromID")
 						.replaceAll(" ", "&nbsp;")
 						.replaceAll("<", "&lt;")
@@ -98,12 +98,12 @@ public class ChatDAO {
 				chatList.add(chat);
 			}
 		} catch(Exception e) {
-			e.printStackTrace(); //오류 잡히면 해당 오류 출력
+			e.printStackTrace(); 
 		} finally {
 			try {if(conn != null) conn.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(pstmt != null) pstmt.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(rs != null) rs.close();} catch (Exception e) {e.printStackTrace();}
-			//1번 사용했으면 자원을 헤제해줘야 함
+			
 		}
 		return chatList; //채팅 리스트 반환
 	}
@@ -111,18 +111,18 @@ public class ChatDAO {
 	// number 파라미터로 chatID를 뺀 결과인 상위 채팅 리스트를 보여줌
 	public ArrayList<ChatDTO> getChatListByRecent(String fromID, String toID, int number) {
 		String SQL = "SELECT * FROM CHAT WHERE ((fromID = ? AND toID = ?) OR (fromID = ? AND toID = ?)) AND chatID > (SELECT MAX(chatID) - ? FROM CHAT WHERE (fromID = ? AND toID = ?) OR (fromID = ? AND toID = ?)) ORDER BY chatTime";
-		//쿼리문 SQL에 대입, 두명만 대화가 가능하도록 수정함
+		//두명만 대화가 가능하도록 수정함
 		
 		ArrayList<ChatDTO> chatList = null;
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null; //특정한 SQL문을 실행한 이후에 나온 결과값을 처리
+		ResultSet rs = null;
 		
 		try {
-			conn = DatabaseUtil.getConnection(); //DatabaseUtil클래스의 get함수(DB연결)를 호출하여 대입
-			pstmt = conn.prepareStatement(SQL);//위의 SQL변수를 가져와 쿼리문을 실행하게 준비
-			pstmt.setString(1, fromID); // 위의 쿼리문의 첫번째 ?에 넣음
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, fromID); 
 			pstmt.setString(2, toID);
 			pstmt.setString(3, toID);
 			pstmt.setString(4, fromID); //메시지를 받던 보내던 항상 참이 되도록
@@ -172,12 +172,12 @@ public class ChatDAO {
 				chatList.add(chat);
 			}
 		} catch(Exception e) {
-			e.printStackTrace(); //오류 잡히면 해당 오류 출력
+			e.printStackTrace();
 		} finally {
 			try {if(conn != null) conn.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(pstmt != null) pstmt.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(rs != null) rs.close();} catch (Exception e) {e.printStackTrace();}
-			//1번 사용했으면 자원을 헤제해줘야 함
+			
 		}
 		return chatList; //채팅 리스트 반환
 	}
@@ -188,22 +188,22 @@ public class ChatDAO {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null; //특정한 SQL문을 실행한 이후에 나온 결과값을 처리
+		ResultSet rs = null; 
 		
 		try {
-			conn = DatabaseUtil.getConnection(); //DatabaseUtil클래스의 get함수(DB연결)를 호출하여 대입
-			pstmt = conn.prepareStatement(SQL);//위의 SQL변수를 가져와 쿼리문을 실행하게 준비
-			pstmt.setString(1, toID); // 위의 쿼리문의 첫번째 ?에 넣음
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, toID); 
 			pstmt.setString(2, fromID);
-			return pstmt.executeUpdate(); //성공하면 1 반환
+			return pstmt.executeUpdate(); 
 			
 		} catch(Exception e) {
-			e.printStackTrace(); //오류 잡히면 해당 오류 출력
+			e.printStackTrace(); 
 		} finally {
 			try {if(conn != null) conn.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(pstmt != null) pstmt.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(rs != null) rs.close();} catch (Exception e) {e.printStackTrace();}
-			//1번 사용했으면 자원을 헤제해줘야 함
+			
 		}
 		return -1; //DB 오류
 	}
@@ -214,12 +214,12 @@ public class ChatDAO {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null; //특정한 SQL문을 실행한 이후에 나온 결과값을 처리
+		ResultSet rs = null;
 		
 		try {
-			conn = DatabaseUtil.getConnection(); //DatabaseUtil클래스의 get함수(DB연결)를 호출하여 대입
-			pstmt = conn.prepareStatement(SQL);//위의 SQL변수를 가져와 쿼리문을 실행하게 준비
-			pstmt.setString(1, chatName); // 위의 쿼리문의 첫번째 ?에 넣음
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, chatName);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -227,12 +227,12 @@ public class ChatDAO {
 			}
 			return 0;
 		} catch(Exception e) {
-			e.printStackTrace(); //오류 잡히면 해당 오류 출력
+			e.printStackTrace();
 		} finally {
 			try {if(conn != null) conn.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(pstmt != null) pstmt.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(rs != null) rs.close();} catch (Exception e) {e.printStackTrace();}
-			//1번 사용했으면 자원을 헤제해줘야 함
+			
 		}
 		return -1; //DB 오류
 	}
@@ -243,12 +243,12 @@ public class ChatDAO {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null; //특정한 SQL문을 실행한 이후에 나온 결과값을 처리
+		ResultSet rs = null;
 		
 		try {
-			conn = DatabaseUtil.getConnection(); //DatabaseUtil클래스의 get함수(DB연결)를 호출하여 대입
-			pstmt = conn.prepareStatement(SQL);//위의 SQL변수를 가져와 쿼리문을 실행하게 준비
-			pstmt.setString(1, fromID); // 위의 쿼리문의 첫번째 ?에 넣음
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, fromID); 
 			pstmt.setString(2, toID);
 			rs = pstmt.executeQuery();
 			
@@ -257,12 +257,12 @@ public class ChatDAO {
 			}
 			return 0;
 		} catch(Exception e) {
-			e.printStackTrace(); //오류 잡히면 해당 오류 출력
+			e.printStackTrace(); 
 		} finally {
 			try {if(conn != null) conn.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(pstmt != null) pstmt.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(rs != null) rs.close();} catch (Exception e) {e.printStackTrace();}
-			//1번 사용했으면 자원을 헤제해줘야 함
+			
 		}
 		return -1; //DB 오류
 	}
@@ -270,18 +270,18 @@ public class ChatDAO {
 	// 첫 메시지함에서 새로운 메시지 중 가장 최근의 메시지가 대표적으로 보여지도록
 	public ArrayList<ChatDTO> getBox(String chatName) {
 		String SQL = "SELECT * FROM CHAT WHERE chatID IN (SELECT MAX(chatID) FROM CHAT WHERE toID = ? OR fromID = ? GROUP BY fromID, toID)";
-		//쿼리문 SQL에 대입, 두명만 대화가 가능하도록 수정함
+		
 			
 		ArrayList<ChatDTO> chatList = null;
 			
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null; //특정한 SQL문을 실행한 이후에 나온 결과값을 처리
+		ResultSet rs = null;
 			
 		try {
-			conn = DatabaseUtil.getConnection(); //DatabaseUtil클래스의 get함수(DB연결)를 호출하여 대입
-			pstmt = conn.prepareStatement(SQL);//위의 SQL변수를 가져와 쿼리문을 실행하게 준비
-			pstmt.setString(1, chatName); // 위의 쿼리문의 첫번째 ?에 넣음
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, chatName);
 			pstmt.setString(2, chatName);
 				
 			rs = pstmt.executeQuery(); //위의 결과를 rs에 담음, 조회(SELECT)문은 executeQuery()를 이용해  리서트셋을 통해 담아야 한다.
@@ -343,12 +343,12 @@ public class ChatDAO {
 				}
 			}
 		} catch(Exception e) {
-			e.printStackTrace(); //오류 잡히면 해당 오류 출력
+			e.printStackTrace(); 
 		} finally {
 			try {if(conn != null) conn.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(pstmt != null) pstmt.close();} catch (Exception e) {e.printStackTrace();}
 			try {if(rs != null) rs.close();} catch (Exception e) {e.printStackTrace();}
-			//1번 사용했으면 자원을 헤제해줘야 함
+			
 		}
 		return chatList; //채팅 리스트 반환
 	}
