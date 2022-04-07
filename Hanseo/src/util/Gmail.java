@@ -4,7 +4,7 @@ import javax.mail.Authenticator;
 
 import javax.mail.PasswordAuthentication;
 
-public class Gmail extends Authenticator { //gmail smt를 이용하기 위해 계정 정보가 들어가는 클래스
+public class Gmail extends Authenticator { //gmail smtp를 이용하기 위해 계정 정보가 들어가는 클래스
 //Authenticatior는 메일 인증을 도와준다.
 	@Override
 	protected PasswordAuthentication getPasswordAuthentication() {
