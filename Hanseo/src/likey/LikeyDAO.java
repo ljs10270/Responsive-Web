@@ -57,25 +57,25 @@ public class LikeyDAO { //database access object
 	}
 	
 	// 회원탈퇴시
-		public int delete(String userID) {
-			String SQL = "DELETE FROM LIKEY WHERE userID = ?";
+	public int delete(String userID) {
+		String SQL = "DELETE FROM LIKEY WHERE userID = ?";
 			
-			Connection conn = null;
-			PreparedStatement pstmt = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 				
-			try {
-				conn = DatabaseUtil.getConnection(); 
-				pstmt = conn.prepareStatement(SQL);
-				pstmt.setString(1, userID);
-				return pstmt.executeUpdate(); 
-					
-			} catch(Exception e) {
-				e.printStackTrace(); 
-			} finally {
-				try {if(conn != null) conn.close();} catch (Exception e) {e.printStackTrace();}
-				try {if(pstmt != null) pstmt.close();} catch (Exception e) {e.printStackTrace();}
+		try {
+			conn = DatabaseUtil.getConnection(); 
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			return pstmt.executeUpdate(); 
 				
-			}
-			return -1;
+		} catch(Exception e) {
+			e.printStackTrace(); 
+		} finally {
+			try {if(conn != null) conn.close();} catch (Exception e) {e.printStackTrace();}
+			try {if(pstmt != null) pstmt.close();} catch (Exception e) {e.printStackTrace();}
+				
 		}
+		return -1;
+	}
 }
