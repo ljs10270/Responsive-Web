@@ -1,15 +1,15 @@
 package reply;
 
 public class ReplyDTO {
-	String userID;
-	int boardID;
-	String replyContent;
-	String replyDate;
-	int replyGroup;
-	int replySequence;
-	int replyLevel;
-	int likeCount;
-	int replyAvailable;
+	private String userID;
+	private int boardID;
+	private String replyContent;
+	private String replyDate;
+	private int replyGroup;
+	private int replySequence;
+	private int replyLevel;
+	private int likeCount;
+	private int replyAvailable;
 	
 	public String getUserID() {
 		return userID;
